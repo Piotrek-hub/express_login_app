@@ -1,5 +1,6 @@
 const express = require("express")
 const car_router = express.Router()
+const {findOne} = require("../lib/db/user")
 
 const cars = [
     { name: "fiat125p", horsepower: 200, torque: 280 },
@@ -8,10 +9,15 @@ const cars = [
     { name: "skoda_favorit", horsepower: 200, torque: 280 },
 ]
 
-car_router.get("/:car_name", (req, res, next) => {
+car_router.get("/:car_name", async (req, res, next) => {
     const cookies = req.cookies;
-    if (cookies.token == undefined) {
-        res.send("please login")
+    if (cookies.email === undefined) {
+        return res.send("please login")
+    }
+
+    const user = await findOne(cookies.email)
+    if(user === null) {
+        return res.send("user not valid")
     }
 
     next()
