@@ -1,0 +1,24 @@
+<div class="mx-auto bg-gray-100 max-w-[1280px] grid place-items-center gap-[10px]">
+    <input type="number" placeholder="kW" id="kW" />
+    <button id="convert_to_KM" class="bg-yellow-200 px-4 py-2">Convert to KM</button>
+    <span>Result: <span id="KM_result"></span></span>
+    <input type="number" placeholder="KM" id="KM" />
+    <button id="convert_to_kW" class="bg-yellow-200 px-4 py-2">Convert to KM</button>
+    <span>Result: <span id="kW_result"></span></span>
+</div>
+
+<script>
+    const kW_to_km_ratio = 1.3596;
+    document.querySelector("#convert_to_KM").addEventListener('click', () => {
+        const kW = document.querySelector("#kW").value;
+        const result = Number(kW) * kW_to_km_ratio;
+        document.querySelector("#KM_result").innerHTML = result.toFixed(2).toString();
+    })
+
+    document.querySelector("#convert_to_kW").addEventListener('click', () => {
+        const kW = document.querySelector("#KM").value;
+        const result = Number(kW) / kW_to_km_ratio;
+        document.querySelector("#kW_result").innerHTML = result.toFixed(2).toString();
+    })
+
+</script>

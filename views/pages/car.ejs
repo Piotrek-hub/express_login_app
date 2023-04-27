@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<%- include('../partials/nav'); %>
+    <main class="border-2 border-blue-200  gap-10 p-10 flex items-center justify-center mx-auto mt-[100px]">
+        <span>name:
+            <%= car.name %>
+        </span>
+        <span>horsepower:
+            <%= car.horsepower %>
+        </span>
+        <span>torque:
+            <%= car.torque %>
+        </span>
+        <img src="images/cars/<%=car.name%>.jpeg" class=" object-cover max-w-[400px]" />
+    </main>
+    <%- include('../partials/converter'); %>
