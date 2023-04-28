@@ -33,7 +33,7 @@ auth_router.post("/register", async (req, res) => {
     const { username, email, password } = req.body
 
     const users = await findOne(email, username)
-    console.log(users)
+
     if (users !== null) {
         return res.send("User already exists")
     }

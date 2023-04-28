@@ -1,6 +1,6 @@
 const express = require("express")
 const car_router = express.Router()
-const {findOne} = require("../lib/db/user")
+const {findOne, updatePageState} = require("../lib/db/user")
 
 const cars = [
     { name: "fiat125p", horsepower: 200, torque: 280 },
@@ -19,6 +19,10 @@ car_router.get("/:car_name", async (req, res, next) => {
     if(user === null) {
         return res.send("user not valid")
     }
+
+    const { car_name } = req.params
+    const u = await updatePageState(user.email, car_name)
+    console.log(u)
 
     next()
 }, (req, res) => {

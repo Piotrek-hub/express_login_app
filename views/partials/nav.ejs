@@ -7,5 +7,13 @@
         <a href="/car/skoda_favorit" class="hover:border-b-[1px] border-b-0 border-b-black">Skoda Favorit</a>
         <a href="/auth" class="bg-blue-200 px-4 py-2">Login</a>
         <a href="/auth" class="bg-green-200 px-4 py-2">Register</a>
+        <p class="bg-red-200 px-4 py-2" id="logout">Log out</p>
     </div>
 </nav>
+
+
+<script>
+    document.querySelector("#logout").addEventListener('click', () => {
+        document.cookie="email=undefined;path=/;Max-Age=0"
+    })
+</script>
